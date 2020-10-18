@@ -1,0 +1,22 @@
+{
+    "product": [
+        {
+            "productId": "1",
+            "productName": "Football",
+            "productCategory": "sport",
+            "productPrice": "SGD10"
+        },
+        {
+            "productId": "2",
+            "productName": "Border Collie",
+            "productCategory": "animal",
+            "productPrice": "SGD1500"
+        },
+        {
+            "productId": "3",
+            "productName": "Honda Civic",
+            "productCategory": "vehicle",
+            "productPrice": "SGD30000"
+        }
+    ]
+}

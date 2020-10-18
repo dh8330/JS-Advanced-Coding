@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+
+<style>
+.dropbtn {
+    background-color: greenyellow;
+    color: white;
+    padding: 20px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}    
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980b9;
+}
+
+.Dropdown {
+    position: relative;
+    display: inline-block
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(red, green, blue, alpha);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: black;
+}
+
+.show {display: black;}
+
+</style>    
+</head>
+<body>
+    <h1>This the product page.</h1>
+    <br>
+    <p id="product"></p>
+
+    <p id="currency"></p>
+
+<div class=""dropbtn>
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="Dropdown" class="dropdown-content">
+        <a href="SGD">SGD</a>
+        <a href="RMB">RMB</a>
+        <a href="JPY">JPY</a>
+        <a href="MYR">MYR</a>
+    </div>
+</div>
+
+<script>
+function myFunction() {
+    document.getElementById("Dropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementByIdClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+</script>
+        
+    
+<script>
+    document.addEventListener("DOMContentLoaded",loadproduct());
+    function loadproduct() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200) {
+                let product = JSON.parse(this.responseText);
+                console.log(product);
+            }
+        }
+        xhttp.open("GET","product.json",true);
+        xhttp.send();
+    }
+
+    document.addEventListener("DOMContentLoaded",loadcurrency());
+    function loadcurrency() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200) {
+                let currency = JSON.parse(this.responseText);
+                console.log(currency);
+            }
+        }
+        xhttp.open("GET","currency.json",true);
+        xhttp.send();
+    }
+
+</script>
+
+<script>
+    myObj = {productId: 1, productName: "football", productCategory: "sport", productPrice: "SGD10" };
+    myJSON = JSON.stringify(myObj);
+    localStorage.setItem("product", myJSON);
+
+    myObj = {currency: "Singapore Dollars", Currency_ISO: "SGD", basecurrency: "true", rate: 1 };
+    myJSON = JSON.stringify(myObj);
+    localStorage.setItem("currency", myJSON);
+</script>
+
+<script>
+    text = localStorage.getItem("product");
+    obj = JSON.parse(text);
+    document.getElementById("product").innerHTML = obj.name; 
+
+    text = localStorage.getItem("currency");
+    obj = JSON.parse(text);
+    document.getElementById("currency").innerHTML = obj.name;
+</script>
+
+
+    
+</body>
+</html>
+
+

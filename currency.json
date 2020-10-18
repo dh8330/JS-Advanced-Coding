@@ -1,0 +1,28 @@
+{
+    "Currency": [
+        {
+            "currency": "Singapore Dollars",
+            "currency_ISO": "SGD",
+            "basecurrency": "true",
+            "rate": "1"
+        },
+        {
+            "currency": "Chinese Yuan",
+            "currency_ISO": "RMB",
+            "basecurrency": "false",
+            "rate": "4.928"
+        },
+        {
+            "currency": "Japanese Yen",
+            "currency_ISO": "JPY",
+            "basecurrency": "false",
+            "rate": "77.566"
+        },
+        {
+            "currency": "Malaysia Ringgit",
+            "currency_ISO": "MYR",
+            "basecurrency": "false",
+            "rate": "3.052"
+        }
+    ]
+}
